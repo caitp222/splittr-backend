@@ -16,6 +16,7 @@ class UsersController < ApplicationController
       redirect_to_user_path(user)
     else
       render json: user.errors.full_messages
+    end
   end
 
   def find
