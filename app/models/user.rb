@@ -12,4 +12,11 @@ class User < ApplicationRecord
   def full_name
     first_name + " " + last_name
   end
+
+  def total_group_spend(group_id)
+    group = Group.find_by(id: group_id)
+    user_expenses = group.expenses.select{|expense| expense.user == self}
+    user_expenses.inject(0){|sum, expense| sum + expense.amount}
+  end
+
 end
