@@ -20,7 +20,7 @@ class ExpensesController < ApplicationController
   end
 
   def destroy
-    expense = expense.find(params[:id])
+    expense = Expense.find_by(id: params[:id])
     if expense.destroy
       render json: {message: "Delete successful"}
     else

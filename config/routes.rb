@@ -19,6 +19,6 @@ Rails.application.routes.draw do
   #expenses
   get '/groups/:group_id/expenses/:expense_id' => 'expenses#show'
   post '/groups/:id/expenses' => 'expenses#create'
-  delete '/groups/:id/expenses/' => 'expenses#destroy'
+  delete '/expenses/:id' => 'expenses#destroy'
 
 end
