@@ -10,10 +10,12 @@ class UsersController < ApplicationController
   end
 
   def create
+    puts params
+    puts user_params
     user = User.new(user_params)
     if user.save
       session[:user_id] = user.id
-      redirect_to_user_path(user)
+      redirect_to user
     else
       render json: user.errors.full_messages
     end
