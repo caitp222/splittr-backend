@@ -17,7 +17,7 @@ Rails.application.routes.draw do
   post '/groups/settle' => 'groups#settle'
 
   #expenses
-  get '/groups/:id/expenses/:id' => 'expenses#show'
+  get '/groups/:group_id/expenses/:expense_id' => 'expenses#show'
   post '/groups/:id/expenses' => 'expenses#create'
   delete '/groups/:id/expenses/' => 'expenses#destroy'
 

@@ -1,6 +1,7 @@
 class GroupsController < ApplicationController
 
   def create
+    puts params
     group = Group.new(group_params)
     if group.save
       render json: group
@@ -25,10 +26,11 @@ class GroupsController < ApplicationController
       render json: {message: "The group was successfully settled!"}
     else
       render json: {message: "Something went wrong, the group was not settled."}
+    end
   end
 
   private
   def group_params
-    params.require(:group).permit(:groups_name, :details, :creator_id, :settled_up)
+    params.require(:group).permit(:group_name, :details, :creator_id, :settled_up)
   end
 end

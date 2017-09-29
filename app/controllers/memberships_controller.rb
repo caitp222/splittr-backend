@@ -5,7 +5,7 @@ class MembershipsController < ApplicationController
     if membership.save
       render json: membership
     else
-      render json: {errors: membership.errors.full_messages
+      render json: {errors: membership.errors.full_messages}
     end
   end
 
