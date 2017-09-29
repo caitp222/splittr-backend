@@ -5,4 +5,12 @@ class Group < ApplicationRecord
   has_many :expenses, through: :memberships
 
   validates :group_name, presence: true
+
+  def member_count
+    self.members.length
+  end
+
+  def expenses_total
+    self.expenses.sum(:amount)
+  end
 end
