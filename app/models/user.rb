@@ -29,4 +29,22 @@ class User < ApplicationRecord
     self.total_group_spend(group.id) > group.member_split
   end
 
+  def amount_owed_by_group(group_id)
+    group = Group.find_by(id: group_id)
+    if self.owed_by_group?(group_id)
+      self.total_group_spend(group_id) - group.member_split
+    else
+      return nil
+    end
+  end
+
+  def amount_owes_group(group_id)
+    group = Group.find_by(id: group_id)
+    if self.owes_group?(group_id)
+      group.member_split - self.total_group_spend(group_id)
+    else
+      return nil
+    end
+  end
+
 end
