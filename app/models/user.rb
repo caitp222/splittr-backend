@@ -19,4 +19,14 @@ class User < ApplicationRecord
     user_expenses.inject(0){|sum, expense| sum + expense.amount}
   end
 
+  def owes_group?(group_id)
+    group = Group.find_by(id: group_id)
+    self.total_group_spend(group.id) < group.member_split
+  end
+
+  def owed_by_group?(group_id)
+    group = Group.find_by(id: group_id)
+    self.total_group_spend(group.id) > group.member_split
+  end
+
 end

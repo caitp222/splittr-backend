@@ -13,4 +13,8 @@ class Group < ApplicationRecord
   def expenses_total
     self.expenses.sum(:amount)
   end
+
+  def member_split
+    self.expenses_total / self.member_count
+  end
 end
