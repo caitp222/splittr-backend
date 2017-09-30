@@ -9,10 +9,12 @@ class User < ApplicationRecord
   validates :first_name, :last_name, :email, presence: true
   validates :email, uniqueness: true
 
+  # virtual attributes
   def full_name
     first_name + " " + last_name
   end
 
+  # debt calculation methods
   def total_group_spend(group_id)
     group = Group.find_by(id: group_id)
     user_expenses = group.expenses.select{|expense| expense.user == self}
@@ -45,6 +47,13 @@ class User < ApplicationRecord
     else
       return nil
     end
+  end
+
+  # json object rendering methods
+  def user_data
+    { user: self,
+      user_groups: self.groups
+    }
   end
 
 end
