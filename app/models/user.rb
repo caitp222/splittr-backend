@@ -50,10 +50,20 @@ class User < ApplicationRecord
   end
 
   # json object rendering methods
-  def user_data
-    { user: self,
-      user_groups: self.groups
-    }
+  def json_data
+    { user: self, user_groups: self.groups }
+  end
+
+  def group_json_data(group_id)
+    user_expenses = self.expenses.select {|expense| expense.group.id == group_id}
+    user_expenses = user_expenses.map do |expense|
+      expense.group_json_data
+    end
+    if self.owes_group?(group_id)
+      { id: self.id, full_name: self.full_name, total_spend: self.total_group_spend(group_id), expenses: expenses, owes?: self.owes_group?(group_id), amount_user_owes: self.amount_owes_group(group_id) }
+    else
+      { id: self.id, full_name: self.full_name, total_spend: self.total_group_spend(group_id), expenses: expenses, owes?: self.owes_group?(group_id), amount_user_is_owed: self.amount_owed_by_group(group_id) }
+    end
   end
 
 end

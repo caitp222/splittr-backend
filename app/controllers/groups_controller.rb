@@ -13,10 +13,7 @@ class GroupsController < ApplicationController
   def show
     group = Group.find_by(id: params[:id])
     if group
-      group_data = { group: group,
-        members: group.members
-      }
-      render json: group_data
+      render json: group.json_data
     else
       render json: {error: "Group does not exist, please try again"}
     end
