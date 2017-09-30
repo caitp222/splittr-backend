@@ -6,6 +6,7 @@ class Group < ApplicationRecord
 
   validates :group_name, presence: true
 
+  # calculation methods
   def member_count
     self.members.length
   end
@@ -16,5 +17,13 @@ class Group < ApplicationRecord
 
   def member_split
     self.expenses_total / self.member_count
+  end
+
+  # json object rendering methods
+  def json_data
+    members = self.members.map do |member|
+      member.group_json_data(self.id)
+    end
+    { group: self, members: members, member_split: self.member_split }
   end
 end

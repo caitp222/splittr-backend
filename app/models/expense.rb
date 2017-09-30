@@ -5,4 +5,8 @@ class Expense < ApplicationRecord
 
   validates :amount, :vendor, presence: true
 
+  # json object rendering methods
+  def group_json_data
+    {vendor: self.vendor, amount: self.amount, date: self.created_at}
+  end
 end
