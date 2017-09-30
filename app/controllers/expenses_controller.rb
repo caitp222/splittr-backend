@@ -1,10 +1,12 @@
 class ExpensesController < ApplicationController
 
   def create
+    puts params
     expense = Expense.new(expense_params)
     if expense.save
       render json: expense
     else
+      puts expense.errors.full_messages
       render json: {errors: expense.errors.full_messages}
     end
   end

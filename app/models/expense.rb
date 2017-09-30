@@ -11,6 +11,6 @@ class Expense < ApplicationRecord
   end
 
   def group_json_data
-    {vendor: self.vendor, amount: self.amount, date: self.created_at}
+    { vendor: self.vendor, amount: self.amount }
   end
 end
