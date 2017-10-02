@@ -55,8 +55,8 @@ class User < ApplicationRecord
   end
 
   def group_json_data(group_id)
-    user_expenses = self.expenses.select {|expense| expense.group.id == group_id}
-    user_expenses = user_expenses.map do |expense|
+    expenses = self.expenses.select {|expense| expense.group.id == group_id}
+    user_expenses = expenses.map do |expense|
       expense.group_json_data
     end
     if self.owes_group?(group_id)
