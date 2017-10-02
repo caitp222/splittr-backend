@@ -3,13 +3,14 @@ class UsersController < ApplicationController
   def show
     user = User.find_by(id: params[:id])
     if user
-      render json: user
+      render json: user.json_data
     else
       render json: {error: "user cannot be found"}
     end
   end
 
   def create
+    puts params
     user = User.new(user_params)
     if user.save
       session[:user_id] = user.id
