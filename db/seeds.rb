@@ -28,13 +28,13 @@ end
 end
 
 60.times do
-  Membership.create({user_id: User.all.sample.id,
+  Membership.find_or_create_by({user_id: User.all.sample.id,
     group_id: Group.all.sample.id
     })
 end
 
 100.times do
-  Expense.create({membership_id: User.all.sample.id,
+  Expense.create({membership_id: Membership.all.sample.id,
     amount: rand(5.00...180.00),
     vendor: Faker::GameOfThrones.city,
     description: Faker::HitchhikersGuideToTheGalaxy.quote

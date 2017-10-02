@@ -1,10 +1,12 @@
 class ExpensesController < ApplicationController
 
   def create
+    puts params
     expense = Expense.new(expense_params)
     if expense.save
       render json: expense
     else
+      puts expense.errors.full_messages
       render json: {errors: expense.errors.full_messages}
     end
   end
@@ -13,7 +15,7 @@ class ExpensesController < ApplicationController
     group = Group.find_by(id: params[:group_id])
     expense = Expense.find_by(id: params[:expense_id])
     if expense && expense.group == group
-      render json: expense
+      render json: expense.json_data
     else
       render json: {error: "Expense does not exist, please try again"}
     end

@@ -24,6 +24,6 @@ class Group < ApplicationRecord
     members = self.members.map do |member|
       member.group_json_data(self.id)
     end
-    { group: self, members: members, member_split: self.member_split }
+    { group: self, members: members, member_split: self.member_split, total_spend: self.expenses_total}
   end
 end
