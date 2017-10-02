@@ -4,7 +4,7 @@ class GroupsController < ApplicationController
     puts params
     group = Group.new(group_params)
     if group.save
-      render json: group
+      render json: group.json_data
     else
       render json: {errors: group.errors.full_messages}
     end
