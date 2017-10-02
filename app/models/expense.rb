@@ -7,10 +7,10 @@ class Expense < ApplicationRecord
 
   # json object rendering methods
   def json_data
-    { id: self.id, membership_id: self.membership_id, amount: self.amount, paid_by: self.user.full_name, description: self.description, vendor: self.vendor, group_id: self.group.id }
+    { id: self.id, membership_id: self.membership_id, amount: self.amount.round(2), paid_by: self.user.full_name, description: self.description, vendor: self.vendor, group_id: self.group.id }
   end
 
   def group_json_data
-    { vendor: self.vendor, amount: self.amount, group_id: self.group.id}
+    { vendor: self.vendor, amount: self.amount.round(2), group_id: self.group.id, id: self.id }
   end
 end
