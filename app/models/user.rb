@@ -38,7 +38,7 @@ class User < ApplicationRecord
       total = self.total_group_spend(group_id) - group.member_split
       total.round(2)
     else
-      return nil
+      return 0
     end
   end
 
@@ -48,7 +48,7 @@ class User < ApplicationRecord
       total = group.member_split - self.total_group_spend(group_id)
       total.round(2)
     else
-      return nil
+      return 0
     end
   end
 
