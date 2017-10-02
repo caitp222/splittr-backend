@@ -18,7 +18,8 @@ class User < ApplicationRecord
   def total_group_spend(group_id)
     group = Group.find_by(id: group_id)
     user_expenses = group.expenses.select{|expense| expense.user == self}
-    user_expenses.inject(0){|sum, expense| sum + expense.amount}
+    total = user_expenses.inject(0){|sum, expense| sum + expense.amount}
+    total.round(2)
   end
 
   def owes_group?(group_id)
@@ -34,7 +35,8 @@ class User < ApplicationRecord
   def amount_owed_by_group(group_id)
     group = Group.find_by(id: group_id)
     if self.owed_by_group?(group_id)
-      self.total_group_spend(group_id) - group.member_split
+      total = self.total_group_spend(group_id) - group.member_split
+      total.round(2)
     else
       return nil
     end
@@ -43,7 +45,8 @@ class User < ApplicationRecord
   def amount_owes_group(group_id)
     group = Group.find_by(id: group_id)
     if self.owes_group?(group_id)
-      group.member_split - self.total_group_spend(group_id)
+      total = group.member_split - self.total_group_spend(group_id)
+      total.round(2)
     else
       return nil
     end
@@ -56,13 +59,13 @@ class User < ApplicationRecord
 
   def group_json_data(group_id)
     expenses = self.expenses.select {|expense| expense.group.id == group_id}
-    user_expenses = expenses.map do |expense|
+    user_expenses = expenses.map! do |expense|
       expense.group_json_data
     end
     if self.owes_group?(group_id)
-      { id: self.id, full_name: self.full_name, total_spend: self.total_group_spend(group_id), expenses: expenses, owes?: self.owes_group?(group_id), amount_user_owes: self.amount_owes_group(group_id) }
+      { id: self.id, full_name: self.full_name, total_spend: self.total_group_spend(group_id), expenses: expenses, owes?: self.owes_group?(group_id), amount_user_owes: self.amount_owes_group(group_id).round(2) }
     else
-      { id: self.id, full_name: self.full_name, total_spend: self.total_group_spend(group_id), expenses: expenses, owes?: self.owes_group?(group_id), amount_user_is_owed: self.amount_owed_by_group(group_id) }
+      { id: self.id, full_name: self.full_name, total_spend: self.total_group_spend(group_id), expenses: expenses, owes?: self.owes_group?(group_id), amount_user_is_owed: self.amount_owed_by_group(group_id).round(2) }
     end
   end
 
