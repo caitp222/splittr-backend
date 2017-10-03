@@ -7,7 +7,7 @@ class Expense < ApplicationRecord
 
   validates :amount, :vendor, presence: true
 
-GOOGLE_API = "https://vision.googleapis.com/v1/images:annotate?key=" + ENV["GOOGLE_API_KEY"]
+  GOOGLE_API = "https://vision.googleapis.com/v1/images:annotate?key=" + ENV["GOOGLE_API_KEY"]
 
 
   # json object rendering methods
