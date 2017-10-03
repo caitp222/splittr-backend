@@ -29,6 +29,14 @@ class ExpensesController < ApplicationController
     end
   end
 
+  def camera
+    puts params.keys
+    image = params[:data][:data]
+    # binding.pry
+    expense = Expense.new
+    p expense.post_camera_api(image)
+  end
+
   private
   def expense_params
     params.require(:expense).permit(:amount, :vendor, :description, :membership_id)

@@ -20,5 +20,6 @@ Rails.application.routes.draw do
   get '/expenses/:expense_id' => 'expenses#show'
   post '/groups/:id/expenses' => 'expenses#create'
   delete '/expenses/:id' => 'expenses#destroy'
+  post '/expenses/camera' => 'expenses#camera'
 
 end
