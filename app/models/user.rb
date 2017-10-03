@@ -63,9 +63,9 @@ class User < ApplicationRecord
       expense.group_json_data
     end
     if self.owes_group?(group_id)
-      { id: self.id, full_name: self.full_name, total_spend: self.total_group_spend(group_id), expenses: expenses, owes?: self.owes_group?(group_id), amount_user_owes: self.amount_owes_group(group_id).round(2) }
+      { id: self.id, full_name: self.full_name, total_spend: self.total_group_spend(group_id), expenses: expenses, owes: self.owes_group?(group_id), amount_user_owes: self.amount_owes_group(group_id).round(2) }
     else
-      { id: self.id, full_name: self.full_name, total_spend: self.total_group_spend(group_id), expenses: expenses, owes?: self.owes_group?(group_id), amount_user_is_owed: self.amount_owed_by_group(group_id).round(2) }
+      { id: self.id, full_name: self.full_name, total_spend: self.total_group_spend(group_id), expenses: expenses, owes: self.owes_group?(group_id), amount_user_is_owed: self.amount_owed_by_group(group_id).round(2) }
     end
   end
 

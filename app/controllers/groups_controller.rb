@@ -23,7 +23,7 @@ class GroupsController < ApplicationController
   def settle
     group = Group.find_by(id: params[:id])
     group.settled_up = "true"
-    if group.settled_up == true
+    if group.save
       render json: {message: "The group was successfully settled!"}
     else
       render json: {message: "Something went wrong, the group was not settled."}
