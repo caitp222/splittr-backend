@@ -14,7 +14,7 @@ Rails.application.routes.draw do
 
   #groups
   resources :groups, only: [:show, :create]
-  post '/groups/settle' => 'groups#settle'
+  post '/groups/:id/settle' => 'groups#settle'
 
   #expenses
   get '/expenses/:expense_id' => 'expenses#show'
