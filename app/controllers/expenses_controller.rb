@@ -3,6 +3,8 @@ class ExpensesController < ApplicationController
   def create
     puts params
     expense = Expense.new(expense_params)
+    membership = Membership.find_by(user_id: params[:expense][:user_id], group_id = params[:expense][:group_id])
+    expense.membership = membership
     if expense.save
       render json: expense
     else
