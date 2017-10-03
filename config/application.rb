@@ -10,6 +10,7 @@ require "action_mailer/railtie"
 require "action_view/railtie"
 require "action_cable/engine"
 require "httparty"
+require "pry"
 # require "sprockets/railtie"
 # require "rails/test_unit/railtie"
 

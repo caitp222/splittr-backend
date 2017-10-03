@@ -30,7 +30,11 @@ class ExpensesController < ApplicationController
   end
 
   def camera
-    post_camera_api()
+    puts params.keys
+    image = params[:data][:data]
+    # binding.pry
+    expense = Expense.new
+    p expense.post_camera_api(image)
   end
 
   private

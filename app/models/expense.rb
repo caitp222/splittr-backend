@@ -36,6 +36,7 @@ GOOGLE_API = "https://vision.googleapis.com/v1/images:annotate?key=" + ENV["GOOG
               ]
             }.to_json,
     :headers => { 'Content-Type' => 'application/json' } )
-    puts @result.responses
+    # binding.pry
+    # puts @result.response
   end
 end

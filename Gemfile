@@ -21,6 +21,7 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'rack-cors'
 gem 'httparty'
 gem 'dotenv-rails', groups: [:development, :test]
+gem 'pry'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
