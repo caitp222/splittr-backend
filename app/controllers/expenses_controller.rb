@@ -32,12 +32,13 @@ class ExpensesController < ApplicationController
   end
 
   def camera
-    # puts params.keys
+    puts params.keys
     image = params[:data][:data]
+    puts image
     expense = Expense.new
     resp = expense.post_camera_api(image)
-
     text = resp["responses"][0]["fullTextAnnotation"]["text"]
+    puts text
     render json: { text: text }
   end
 
