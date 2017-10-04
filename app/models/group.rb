@@ -22,7 +22,11 @@ class Group < ApplicationRecord
   # json object rendering methods
   def json_data
     members = self.members.map do |member|
+      if member == nil
+        binding.pry
+      else
       member.group_json_data(self.id)
+    end
     end
     { group: self, members: members, member_split: self.member_split.round(2), total_spend: self.expenses_total.round(2)}
   end
