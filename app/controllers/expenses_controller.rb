@@ -38,7 +38,7 @@ class ExpensesController < ApplicationController
     expense = Expense.new
     resp = expense.post_camera_api(image)
     text = resp["responses"][0]["fullTextAnnotation"]["text"]
-    puts text
+    puts text.find_total_from_receipt
     render json: { text: text }
   end
 
