@@ -39,4 +39,16 @@ class Expense < ApplicationRecord
     # binding.pry
     # puts @result.response
   end
+
+  def find_total_from_receipt(str)
+  # for cash and change
+  arr = str.scan(/\d+\.\d{2}/)
+    if arr[-3].to_f + arr[-1].to_f == arr[-2].to_f && arr.length != 0
+      arr[-3]
+    elsif arr.length != 0
+      arr.last
+    else
+      "no dollor amount found"
+    end
+  end
 end
