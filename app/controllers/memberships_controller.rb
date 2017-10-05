@@ -1,15 +1,5 @@
 class MembershipsController < ApplicationController
 
-  # def create
-  #   membership = Membership.new(membership_params)
-  #   binding.pry
-  #   if membership.save
-  #     render json: membership
-  #   else
-  #     render json: {errors: membership.errors.full_messages}
-  #   end
-  # end
-
   def create
     @member = User.find_by(email: params[:email])
     @group = Group.find_by(id: params[:groupId])
