@@ -12,12 +12,15 @@ Membership.destroy_all
 Group.destroy_all
 User.destroy_all
 
+
+
 10.times do
-  User.create({first_name: Faker::GameOfThrones.character.split(" ")[0],
-    last_name: Faker::GameOfThrones.character.split(" ")[1],
+  User.create({
+    first_name: Faker::GameOfThrones.character,
+    last_name: Faker::GameOfThrones.character,
     email: Faker::Internet.email,
     password: "likesbikes"
-     })
+    })
 end
 
 20.times do
@@ -26,16 +29,14 @@ end
     creator_id: User.all.sample.id
     })
 end
-
 60.times do
   Membership.find_or_create_by({user_id: User.all.sample.id,
     group_id: Group.all.sample.id
     })
 end
-
-100.times do
+40.times do
   Expense.create({membership_id: Membership.all.sample.id,
-    amount: rand(5.00...180.00),
+    amount: rand(1..10),
     vendor: Faker::GameOfThrones.city,
     description: Faker::HitchhikersGuideToTheGalaxy.quote
     })
