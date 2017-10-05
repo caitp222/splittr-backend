@@ -4,7 +4,7 @@ class GroupsController < ApplicationController
     puts params
     group = Group.new(group_params)
     if group.save
-      Membership.create(group_id: group.id, user_id: group.creator_id)
+      @membership = Membership.create(group_id: group.id, user_id: group.creator_id)
       render json: group.json_data
     else
       render json: {errors: group.errors.full_messages}
