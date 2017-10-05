@@ -23,7 +23,6 @@ class Group < ApplicationRecord
   def json_data
     members = self.members.map do |member|
       if member == nil
-        binding.pry
       else
       member.group_json_data(self.id)
     end
