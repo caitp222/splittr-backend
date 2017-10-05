@@ -29,13 +29,11 @@ end
     creator_id: User.all.sample.id
     })
 end
-#
 60.times do
   Membership.find_or_create_by({user_id: User.all.sample.id,
     group_id: Group.all.sample.id
     })
 end
-#
 40.times do
   Expense.create({membership_id: Membership.all.sample.id,
     amount: rand(1..10),
