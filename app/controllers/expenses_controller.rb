@@ -40,7 +40,7 @@ class ExpensesController < ApplicationController
     # text = resp["responses"][0]["fullTextAnnotation"]["text"]
     # puts text.find_total_from_receipt
     puts resp
-    render json: { text: text }
+    # render json: { text: text }
   end
 
   private
