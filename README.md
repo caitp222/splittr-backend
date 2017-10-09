@@ -1,24 +1,5 @@
-# README
+# SplittR
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is the Ruby on Rails API for SplittR, a mobile app that allows users to create groups, scan receipts using the Google Vision API and track total group expenditure and how much each member of the group owes. Upon settling up a group, the total that each user has spend is displayed, along with how much they are owed/owe the rest of the group.
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Please see the React-Native front-end repository here: https://github.com/caitp222/splittr-frontend
