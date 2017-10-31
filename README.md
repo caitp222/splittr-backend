@@ -8,5 +8,6 @@ Please see the React-Native front-end repository [here](https://github.com/caitp
 - `git clone https://github.com/caitp222/splittr-backend.git`
 - `cd splittr-backend`
 - `bundle install`
+- `rails db:create && rails db:migrate`
 - `rails s`
 - The API will run on localhost:3000 by default.
